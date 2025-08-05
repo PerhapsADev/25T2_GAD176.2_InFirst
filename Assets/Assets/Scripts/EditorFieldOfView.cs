@@ -18,6 +18,7 @@ namespace LeightonCode
 
             Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleA * fov.viewRadius);
             Handles.DrawLine(fov.transform.position, fov.transform.position + viewAngleB * fov.viewRadius);
+            //visual cone for detecting player and adjusting size
 
             Handles.color = Color.red;
             foreach (Transform visibleTarget in fov.visibleTargets)

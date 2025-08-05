@@ -11,6 +11,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstacleMask;
     public List<Transform> visibleTargets = new List<Transform>();
 
+
     void Start()
     {
         StartCoroutine("FindTargetWithDelay", 1f);
@@ -26,8 +27,10 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    void FindVisibleTargets()
+    public void FindVisibleTargets()
     {
+        visibleTargets.Clear();
+        // clears the list of targets, to prevent memory leak
         Debug.Log("FindingTargets");
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
@@ -37,7 +40,7 @@ public class FieldOfView : MonoBehaviour
             // i = abbervation for increments in standard coding practices
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2)
+            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2 || Vector3.Angle(transform.up, directionToTarget) < viewAngle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
