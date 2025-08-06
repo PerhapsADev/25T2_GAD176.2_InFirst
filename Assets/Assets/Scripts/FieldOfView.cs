@@ -15,7 +15,7 @@ public class FieldOfView : MonoBehaviour
     void Start()
     {
         StartCoroutine("FindTargetWithDelay", 1f);
-        // Delay before dtecting player
+        // Delay before detecting player
     }
 
     IEnumerator FindTargetWithDelay(float delay)
@@ -35,9 +35,10 @@ public class FieldOfView : MonoBehaviour
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
+        // i = abbervation for increments in standard coding practices
+
         {
             Transform target = targetsInViewRadius[i].transform;
-            // i = abbervation for increments in standard coding practices
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2 || Vector3.Angle(transform.up, directionToTarget) < viewAngle / 2)
