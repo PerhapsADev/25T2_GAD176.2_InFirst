@@ -1,68 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class FieldOfView : MonoBehaviour
+namespace ReusableStealthFramework.fov
 {
-    public float viewRadius;
-    [Range(0,180)]
-    public float viewAngle;
-    public LayerMask targetMask;
-    public LayerMask obstacleMask;
-    public List<Transform> visibleTargets = new List<Transform>();
 
-
-    void Start()
+    public class FieldOfView : MonoBehaviour
     {
-        StartCoroutine("FindTargetWithDelay", 1f);
-        // Delay before detecting player
-    }
+        public float viewRadius;
+        [Range(0, 180)]
+        public float viewAngle;
+        public LayerMask targetMask;
+        public LayerMask obstacleMask;
+        public List<Transform> visibleTargets = new List<Transform>();
 
-    IEnumerator FindTargetWithDelay(float delay)
-    {
-        while (true)
+
+        void Start()
         {
-            yield return new WaitForSeconds(delay);
-            FindVisibleTargets();
+            StartCoroutine("FindTargetWithDelay", 1f);
+            // Delay before detecting player
         }
-    }
 
-    public void FindVisibleTargets()
-    {
-        visibleTargets.Clear();
-        // clears the list of targets, to prevent memory leak
-        Debug.Log("FindingTargets");
-        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
-
-        for (int i = 0; i < targetsInViewRadius.Length; i++)
-        // i = abbervation for increments in standard coding practices
-
+        IEnumerator FindTargetWithDelay(float delay)
         {
-            Transform target = targetsInViewRadius[i].transform;
-            Vector3 directionToTarget = (target.position - transform.position).normalized;
-
-            if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2 || Vector3.Angle(transform.up, directionToTarget) < viewAngle / 2)
+            while (true)
             {
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
-                {
-                    visibleTargets.Add(target);
-                    Debug.Log("Player Detected");
-                }
+                yield return new WaitForSeconds(delay);
+                FindVisibleTargets();
             }
         }
 
-    }
-
-    public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGlobal)
-    {
-        if (!angleIsGlobal)
+        public void FindVisibleTargets()
         {
-            angleInDegrees += transform.eulerAngles.y;
-        }
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
-    }
+            visibleTargets.Clear();
+            // clears the list of targets, to prevent memory leak
+            Debug.Log("FindingTargets");
+            Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
+            for (int i = 0; i < targetsInViewRadius.Length; i++)
+            // i = abbervation for increments in standard coding practices
+
+            {
+                Transform target = targetsInViewRadius[i].transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+                if (Vector3.Angle(transform.forward, directionToTarget) < viewAngle / 2 || Vector3.Angle(transform.up, directionToTarget) < viewAngle / 2)
+                {
+                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
+                    {
+                        visibleTargets.Add(target);
+                        Debug.Log("Player Detected");
+                    }
+                }
+            }
+
+        }
+
+        public Vector3 DirectionFromAngle(float angleInDegrees, bool angleIsGlobal)
+        {
+            if (!angleIsGlobal)
+            {
+                angleInDegrees += transform.eulerAngles.y;
+            }
+            return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+        }
+
+
+    }
 
 }

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-namespace LeightonCode
+namespace LReusableStealthFramework.fov
 {
 
-    [CustomEditor(typeof(FieldOfView))]
+    [CustomEditor(typeof(ReusableStealthFramework.fov.FieldOfView))]
     public class EditorFieldOfView : Editor
     {
         void OnSceneGUI()
         {
-            FieldOfView fov = (FieldOfView)target;
+            ReusableStealthFramework.fov.FieldOfView  fov = (ReusableStealthFramework.fov.FieldOfView )target;
             Handles.color = Color.white;
             Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.left, 180, fov.viewRadius);
             Vector3 viewAngleA = fov.DirectionFromAngle(-fov.viewAngle / 2, false);
