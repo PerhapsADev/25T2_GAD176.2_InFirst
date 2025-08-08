@@ -8,28 +8,19 @@ namespace ReusableStealthFramework.enemies
 
     public class BaseAutomatedAI : MonoBehaviour
     {
-
-        [SerializeField] protected int damageValue = 10;
-
-        // [Range(300,-300)] // rotationspeed adjuster
         [SerializeField] protected float rotationSpeed = 50f;
         [SerializeField] protected int healthValue = 10;
-        [Range(-360, 360)] // limit on rotation clockwise
-        [SerializeField] protected float rotationLimitPoint1;
-        [Range(360, -360)] // limit on rotation anti-clockwise
-        [SerializeField] protected float rotationLimitPoint2;
+        [Range(0, 360)] // limit on rotation clockwise
+        [SerializeField] protected float rotationLimitPointRight;
+        [Range(0, -360)] // limit on rotation anti-clockwise
+        [SerializeField] protected float rotationLimitPointLeft;
         [SerializeField] public ReusableStealthFramework.fov.FieldOfView fov;
+        [SerializeField] protected bool isActiveState = true;
 
-        //IMPORTANT NOTE: "rotationLimitPoint1 nor 2 cannot be set to exactly 0.
-        protected float localLimit;
-
-
-        int rotationDirection = 1;
+        protected float rotationOffsetAmount = 0f;
         virtual protected void Start()
         {
-            localLimit = transform.rotation.eulerAngles.y;
-            Debug.Log(localLimit);
-
+            ActivationState();
         }
         virtual protected void Update()
         {
@@ -45,27 +36,62 @@ namespace ReusableStealthFramework.enemies
             {
                 SearchingForTarget();
             }
+
+            if (healthValue <= 0)
+                {
+                    AcitvationSwitchOff();
+                    // death of enemy, add effects like light turning off or something.
+                }
         }
 
         virtual protected void SearchingForTarget()
         {
+            float rotationAmount = rotationSpeed * Time.deltaTime;
 
-            if ((localLimit + rotationLimitPoint1) %360 <= transform.rotation.eulerAngles.y)
+            transform.Rotate(0, rotationAmount, 0);
+
+            rotationOffsetAmount += rotationAmount;
+
+            if (rotationOffsetAmount >= rotationLimitPointRight || rotationOffsetAmount <= rotationLimitPointLeft)
             {
-                rotationDirection = -1;
-                // Debug.Log("anything");
+                rotationSpeed *= -1;
             }
-
-            else if ((localLimit - rotationLimitPoint2) %360 >= transform.rotation.eulerAngles.y)
-            {
-                rotationDirection = 1;
-                // Debug.Log("anything 2");
-            }
-
-            transform.Rotate(0, rotationSpeed * rotationDirection * Time.deltaTime, 0);
             // Debug.Log(localLimit + " | " + transform.rotation.eulerAngles.y);
         }
         // If list is > 0, use this to turn on turrets, spawn enemies etc.
+
+        virtual protected void TargetSpotted()
+        {
+            if (fov.visibleTargets.Count != 0)
+            {
+                gameObject.transform.LookAt(fov.visibleTargets[0].transform, Vector3.up);
+
+                fov.FindVisibleTargets();
+                // In case function fucks up
+            }
+
+            else
+            {
+                SearchingForTarget();
+            }
+        }
+
+        protected void ActivationState()
+        {
+            this.enabled = isActiveState;
+            // checks if Enemy is On or Off.
+        }
+
+        public void AcitvationSwitchOn()
+        {
+            isActiveState = true;
+        }
+        
+        public void AcitvationSwitchOff()
+        {
+            isActiveState = false;
+        }
     }
+    
 
 }
