@@ -1,7 +1,6 @@
-using InFirst.ReuseableStealthFramework.Gun.Audio;
 using UnityEngine;
 
-namespace InFirst.ReuseableStealthFramework.Gun.Shooting
+namespace ReuseableStealthFramework.Gun
 {
     /// <summary>
     /// This class holds function releated to shooting that classes inheriting

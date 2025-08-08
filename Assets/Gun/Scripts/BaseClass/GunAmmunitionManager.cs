@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InFirst.ReuseableStealthFramework.Gun.Reloading
+namespace ReuseableStealthFramework.Gun
 {
     /// <summary>
     /// This class contains methods and variables used for reloading the gun, that
@@ -11,9 +11,9 @@ namespace InFirst.ReuseableStealthFramework.Gun.Reloading
         #region Variables
         
         // Unserialize when finished with testing
-        [SerializeField] protected int currentAmmunition;
+        protected int currentAmmunition;
         // Unserialize when finished with testing
-        [SerializeField] protected int ammunitionCapacity;
+        protected int ammunitionCapacity;
 
         #endregion
 
@@ -26,12 +26,24 @@ namespace InFirst.ReuseableStealthFramework.Gun.Reloading
         // Public as this is called in GunShooter + inheriting classes
         public int GetCurrentAmmunition()
         {
+            Debug.Log("Returning currentAmmunition value: " + currentAmmunition);
             return currentAmmunition;
         }
 
         protected virtual void ReloadAmmunition()
         {
-            currentAmmunition = ammunitionCapacity;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                if (currentAmmunition <= 0)
+                {
+                    currentAmmunition = ammunitionCapacity;
+                    Debug.Log("currentAmmunition is now: " + currentAmmunition);
+                }
+                else
+                {
+                    Debug.Log("currentAmmunition is: " + currentAmmunition + ". Use more!");
+                }
+            }
         }
 
         #endregion

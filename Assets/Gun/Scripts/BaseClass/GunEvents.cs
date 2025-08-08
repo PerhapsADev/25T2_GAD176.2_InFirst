@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace InFirst.ReuseableStealthFramework.Gun
+namespace ReuseableStealthFramework.Gun
 {
     /// <summary>
     /// This class holds events used by the Gun system, that are accessed by

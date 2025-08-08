@@ -1,7 +1,7 @@
 using UnityEngine;
-using InFirst.ReuseableStealthFramework.Gun.Shooting;
+using ReuseableStealthFramework.Gun;
 
-namespace InFirst.ReuseableStealthFramework.Gun.TeleportDasher
+namespace ReuseableStealthFramework.TeleportDasher
 {
     /// <summary>
     /// This class handles registering shooting, and calling the needed methods
