@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Enemy
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Camera
+  - Obstacle
+  - Turret
   - 
   - 
   - 
