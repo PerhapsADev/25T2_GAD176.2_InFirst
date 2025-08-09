@@ -8,8 +8,8 @@ namespace ReuseableStealthFramework.TeleportDasher
 
         [Header("Data")]
 
-        [Tooltip("This is the amount that the player's position will be incremented by each time the player fires the Teleport Dasher.")]
-        [SerializeField] private Vector3 _amountToUpdatePositionBy;
+        [Tooltip("This is the amount that the player's position will be incremented by each time the player fires the Teleport Dasher. It will update the Z axis of the player, moving them forward.")]
+        [SerializeField] private float _amountToUpdatePositionBy;
 
         [Header("Component")]
 
@@ -25,9 +25,7 @@ namespace ReuseableStealthFramework.TeleportDasher
 
         public void TeleportDashPlayer()
         {
-            Vector3 _updatedPlayerPosition = new Vector3(_playerTransform.position.x, _playerTransform.position.y, _playerTransform.position.z);
-
-            _updatedPlayerPosition += _amountToUpdatePositionBy;
+            Vector3 _updatedPlayerPosition = _playerTransform.position + _playerTransform.rotation * new Vector3(0, 0, 1) * _amountToUpdatePositionBy;
 
             _characterController.enabled = false;
             _playerTransform.position = _updatedPlayerPosition;
