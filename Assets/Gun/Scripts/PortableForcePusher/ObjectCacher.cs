@@ -34,14 +34,15 @@ namespace ReuseableStealthFramework.PortableForcePusher
             // We use SphereCastAll here rather than CheckSphere or other related
             // methods, as SphereCastAll can detect colliders already colliding
             // with it when created.
-            RaycastHit[] _temporaryRaycastHitArray = Physics.SphereCastAll(_positionToCreateSphereCast.position, _sphereCastRadius, transform.forward, 0f, 6) as RaycastHit[];
-            List<RaycastHit> _objectsReturnedBySphereCast = _temporaryRaycastHitArray.ToList();
+            Collider[] _temporaryRaycastHitArray = Physics.OverlapSphere(_positionToCreateSphereCast.position, _sphereCastRadius, 5);
+            Debug.Log("_temporaryRaycastHitArray is equal to [" + _temporaryRaycastHitArray.Length + "]");
+            List<Collider> _objectsReturnedBySphereCast = _temporaryRaycastHitArray.ToList();
 
             for (int listIndex = 0; listIndex < _objectsReturnedBySphereCast.Count ; listIndex++)
             {
-                if (_objectsReturnedBySphereCast[listIndex].rigidbody != null)
+                if (_objectsReturnedBySphereCast[listIndex].GetComponent<Rigidbody>() != null)
                 {
-                    _objectsToForcePush.Add(_objectsReturnedBySphereCast[listIndex].rigidbody);
+                    _objectsToForcePush.Add(_objectsReturnedBySphereCast[listIndex].GetComponent<Rigidbody>());
                 }
             }
 
@@ -55,5 +56,10 @@ namespace ReuseableStealthFramework.PortableForcePusher
         }
 
         #endregion
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(_positionToCreateSphereCast.position, _sphereCastRadius);
+        }
     }
 }

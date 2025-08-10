@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ReuseableStealthFramework.PortableForcePusher
@@ -10,6 +11,9 @@ namespace ReuseableStealthFramework.PortableForcePusher
         #region Variables
 
         [Header("Data")]
+
+        [Tooltip("The multiplier for the amount of force applied to objects. Increasing this value will make the force push more powerful.")]
+        [SerializeField] private float _forceAmount;
 
         [Tooltip("The direction the objects will be force pushed into. For the purpose of this gun, it should be in a forward direction.")]
         [SerializeField] private Vector3 _directionForForcePush;
@@ -40,7 +44,24 @@ namespace ReuseableStealthFramework.PortableForcePusher
 
         private void ForcePushObjects(Vector3 directionToPush, ForceMode forceModeToUse)
         {
-            // Code here
+            Debug.Log("ForcePushObjects method called!");
+
+            if (_isForcePushing)
+            {
+                Debug.Log("We are currently force pushing objects");
+
+                List<Rigidbody> _objectsToForcePush = new List<Rigidbody>();
+                _objectsToForcePush = _objectCacher.GetObjectsToForcePush();
+                Debug.Log("We are force pushing [" + _objectsToForcePush.Count + "] objects.");
+
+                for (int objectToAddForceTo = 0; objectToAddForceTo < _objectsToForcePush.Count; objectToAddForceTo++)
+                {
+                    _objectsToForcePush[objectToAddForceTo].AddForce(directionToPush * _forceAmount, forceModeToUse);
+                }
+
+                _objectCacher.RemoveObjectsFromForcePushList();
+                _isForcePushing = false;
+            }
         }
 
         #endregion
@@ -49,7 +70,7 @@ namespace ReuseableStealthFramework.PortableForcePusher
 
         private void FixedUpdate()
         {
-            ForcePushObjects(_directionForForcePush, _forceModeForForcePush);
+            ForcePushObjects(transform.forward, _forceModeForForcePush);
         }
 
         #endregion
