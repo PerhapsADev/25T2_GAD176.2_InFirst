@@ -44,7 +44,7 @@ namespace ReuseableStealthFramework.PortableForcePusher
 
         private void ForcePushObjects(Vector3 directionToPush, ForceMode forceModeToUse)
         {
-            Debug.Log("ForcePushObjects method called!");
+            //Debug.Log("ForcePushObjects method called!");
 
             if (_isForcePushing)
             {

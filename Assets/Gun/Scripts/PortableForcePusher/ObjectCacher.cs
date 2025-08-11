@@ -17,6 +17,9 @@ namespace ReuseableStealthFramework.PortableForcePusher
         [Tooltip("How large the radius of our sphere cast will be. This sphere cast is the one used to grab references to the objects we will force push infront of the player.")]
         [SerializeField] private float _sphereCastRadius;
 
+        [Tooltip("This is the layermask we look for when knowing which objects should be affected by the force push.")]
+        [SerializeField] private LayerMask _layerMask;
+
         [Header("Components")]
 
         [Tooltip("This should refer to the transform component where we would want to create our sphere cast. In this case, in front of us.")]
@@ -34,19 +37,23 @@ namespace ReuseableStealthFramework.PortableForcePusher
             // We use SphereCastAll here rather than CheckSphere or other related
             // methods, as SphereCastAll can detect colliders already colliding
             // with it when created.
-            Collider[] _temporaryRaycastHitArray = Physics.OverlapSphere(_positionToCreateSphereCast.position, _sphereCastRadius, 5);
+            Collider[] _temporaryRaycastHitArray = Physics.OverlapSphere(_positionToCreateSphereCast.position, _sphereCastRadius, _layerMask);
             Debug.Log("_temporaryRaycastHitArray is equal to [" + _temporaryRaycastHitArray.Length + "]");
-            List<Collider> _objectsReturnedBySphereCast = _temporaryRaycastHitArray.ToList();
+            //Collider[] _objectsReturnedBySphereCast = _temporaryRaycastHitArray;
 
-            for (int listIndex = 0; listIndex < _objectsReturnedBySphereCast.Count ; listIndex++)
+            for (int arrayIndex = 0; arrayIndex < _temporaryRaycastHitArray.Length ; arrayIndex++)
             {
-                if (_objectsReturnedBySphereCast[listIndex].GetComponent<Rigidbody>() != null)
+                if (_temporaryRaycastHitArray[arrayIndex].gameObject.GetComponent<Rigidbody>() != null)
                 {
-                    _objectsToForcePush.Add(_objectsReturnedBySphereCast[listIndex].GetComponent<Rigidbody>());
+                    _objectsToForcePush.Add(_temporaryRaycastHitArray[arrayIndex].gameObject.GetComponent<Rigidbody>());
+                    Debug.Log("[" + arrayIndex + "]x time adding rigidbody to list!");
                 }
+                Debug.Log("[" + arrayIndex + "]x for loop is looped through!");
             }
 
-            _objectsReturnedBySphereCast.Clear();
+            Debug.Log("objectsToForcePush has [" + _objectsToForcePush.Count + "]");
+            //_objectsReturnedBySphereCast = null;
+            //Debug.Log("objectsToForcePush now has [" + _objectsToForcePush.Count + "] after clearing objectsReturnedBySphereCast");
             return _objectsToForcePush;
         }
 
