@@ -33,7 +33,7 @@ namespace ReusableStealthFramework.fov
         {
             visibleTargets.Clear();
             // clears the list of targets, to prevent memory leak
-            Debug.Log("FindingTargets");
+           // Debug.Log("FindingTargets");
             Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
             for (int i = 0; i < targetsInViewRadius.Length; i++)
@@ -50,7 +50,7 @@ namespace ReusableStealthFramework.fov
                     if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstacleMask))
                     {
                         visibleTargets.Add(target);
-                        Debug.Log("Player Detected");
+                       // Debug.Log("Player Detected");
                     }
                 }
             }
