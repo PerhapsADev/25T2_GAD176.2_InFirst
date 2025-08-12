@@ -27,10 +27,10 @@ namespace ReuseableStealthFramework.PortableForcePusher
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (!_forcePusher.GetIsForcePushingValue())
+                if (!_forcePusher.GetIsForcePushingValue() && _portableForcePusherAmmunitionManager.GetCurrentAmmunition() > 0)
                 {
                     _forcePusher.ToggleIsForcePushing(true);
-                    _portableForcePusherAmmunitionManager.UpdateAmmunition(-1);
+                    _portableForcePusherAmmunitionManager.UpdateAmmunition(-1, false);
                     _gunSoundEffectManager.PlaySoundEffect(0, transform.position);
                 }
             }

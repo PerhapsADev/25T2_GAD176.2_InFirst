@@ -65,6 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f1211ee3ba670459986a045b1b8826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentAmmunition: 0
+  ammunitionCapacity: 6
 --- !u!114 &2174516067200155715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,6 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sphereCastRadius: 4
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   _positionToCreateSphereCast: {fileID: 3715226542130927647}
   _objectsToForcePush: []
 --- !u!114 &7878513024921863787

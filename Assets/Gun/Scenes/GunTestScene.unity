@@ -2590,11 +2590,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCapsulePortableForcePusher
       objectReference: {fileID: 0}
-    - target: {fileID: 4180766327926462404, guid: bf8b3b331f70cd641b5c913518ff9963,
-        type: 3}
-      propertyPath: _layerMask.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 5554382506180543949, guid: bf8b3b331f70cd641b5c913518ff9963,
         type: 3}
       propertyPath: m_LocalPosition.x
