@@ -1343,7 +1343,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 935523586}
-  - {fileID: 2034746840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1501,6 +1500,7 @@ GameObject:
   - component: {fileID: 935523588}
   - component: {fileID: 935523587}
   - component: {fileID: 935523589}
+  - component: {fileID: 935523590}
   m_Layer: 5
   m_Name: Shop Menu
   m_TagString: Untagged
@@ -1530,6 +1530,7 @@ RectTransform:
   - {fileID: 1689413892}
   - {fileID: 1538470930}
   - {fileID: 514028041}
+  - {fileID: 2034746840}
   m_Father: {fileID: 914218597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1599,6 +1600,21 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 40}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &935523590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935523585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963cc19da9637ed42a47e4c514851b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopMenu: {fileID: 935523585}
+  Controller: {fileID: 0}
+  ShopMenuOpen: 0
 --- !u!224 &948040315 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3862743220516762192, guid: 5aebc0b7f95247047a045403205d832e,
@@ -2775,7 +2791,6 @@ MonoBehaviour:
   InShopRadius: 0
   UiPressE: {fileID: 605889548}
   ShopMenu: {fileID: 935523585}
-  QuitShopButton: {fileID: 2034746836}
 --- !u!1 &2034746836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,6 +2803,7 @@ GameObject:
   - component: {fileID: 2034746839}
   - component: {fileID: 2034746838}
   - component: {fileID: 2034746837}
+  - component: {fileID: 2034746841}
   m_Layer: 5
   m_Name: Quit Shop
   m_TagString: Untagged
@@ -2838,7 +2854,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2034746838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2034746838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,19 +2912,39 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034746836}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.4183342, y: 0.8366684, z: 0.8366684}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 809791568}
-  m_Father: {fileID: 914218597}
+  m_Father: {fileID: 935523586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -217, y: 121.2}
+  m_AnchoredPosition: {x: -302.59503, y: 169.00696}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2034746841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034746836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!224 &2050105922 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3862743220516762192, guid: 5aebc0b7f95247047a045403205d832e,
@@ -3384,6 +3432,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_Name
