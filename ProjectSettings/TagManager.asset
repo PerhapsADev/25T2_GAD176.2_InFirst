@@ -14,13 +14,15 @@ TagManager:
   - 
   - Water
   - UI
+  - ForcePushable
   - 
-  - 
+
   - Player
-  - Camera
   - Obstacle
-  - Turret
-  - 
+  - Turrets
+  - Cameras
+  - Tripwires
+
   - 
   - 
   - 

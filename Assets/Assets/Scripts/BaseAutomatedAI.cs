@@ -78,6 +78,8 @@ namespace ReusableStealthFramework.enemies
 
                 fov.FindVisibleTargets();
                 // In case function fucks up
+
+                Debug.Log("Spotted Player");
             }
 
             else

@@ -13,10 +13,15 @@ namespace ReusableStealthFramework.fov
         public LayerMask obstacleMask;
         public List<Transform> visibleTargets = new List<Transform>();
 
+        [SerializeField] float delayFindingTarget = 1f;
+
+
 
         void Start()
         {
-            StartCoroutine("FindTargetWithDelay", 1f);
+
+            StartCoroutine("FindTargetWithDelay", delayFindingTarget);
+
             // Delay before detecting player
         }
 

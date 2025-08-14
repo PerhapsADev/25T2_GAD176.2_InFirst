@@ -396,7 +396,9 @@ GameObject:
   - component: {fileID: 8933224403747050353}
   - component: {fileID: 5500843301688745172}
   - component: {fileID: 7760296579154470942}
-  - component: {fileID: 7681922098495304362}
+
+  - component: {fileID: 1647694132054424240}
+
   m_Layer: 9
   m_Name: SecurityCamera
   m_TagString: Untagged
@@ -413,7 +415,9 @@ Transform:
   m_GameObject: {fileID: 8120800396521359819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.53, z: 0.08}
+
+  m_LocalPosition: {x: 1.331, y: -0.571782, z: -5.518}
+
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -471,7 +475,10 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7681922098495304362
+
+
+--- !u!114 &1647694132054424240
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -480,14 +487,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8120800396521359819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268fa8f448e6dac429a03711047494c0, type: 3}
+
+
+  m_Script: {fileID: 11500000, guid: 2dc18e08d6efeca4d8d0c3d01e369bb0, type: 3}
+
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
   healthValue: 10
-  rotationLimitPointRight: 45
-  rotationLimitPointLeft: -45
-  fov: {fileID: 8151339077646193757}
+
+  rotationLimitPointRight: 0
+  rotationLimitPointLeft: 0
+  fov: {fileID: 0}
   isActiveState: 1
-  designatedTurrets:
-  - {fileID: 0}
+  lightBulbState: {fileID: 0}
+  designatedTurrets: []
+
