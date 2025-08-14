@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public void TakesDamage()
+{
+        Debug.Log ("Player wouldve taken damage");
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

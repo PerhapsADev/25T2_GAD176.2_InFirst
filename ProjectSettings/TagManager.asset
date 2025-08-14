@@ -16,12 +16,15 @@ TagManager:
   - UI
   - ForcePushable
   - 
-  - 
-  - 
+
+
   - Player
-  - Obsatcles
-  - Automated Defences
-  - Gaurds
+  - Obstacle
+  - Turrets
+  - Cameras
+  - Tripwires
+  - 
+
   - 
   - 
   - 
