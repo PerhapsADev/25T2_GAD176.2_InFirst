@@ -5,6 +5,8 @@ using ReusableStealthFramework.enemies;
 using Unity.VisualScripting;
 using UnityEngine;
 
+using UnityEngine.InputSystem.XR;
+
 public class SecurityCamera : BaseAutomatedAI
 {
     [SerializeField] Turret[] designatedTurrets;

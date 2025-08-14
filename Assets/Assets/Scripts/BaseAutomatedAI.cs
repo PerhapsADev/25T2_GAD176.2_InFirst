@@ -17,16 +17,32 @@ namespace ReusableStealthFramework.enemies
         [SerializeField] public ReusableStealthFramework.fov.FieldOfView fov;
         [SerializeField] protected bool isActiveState = true;
 
+        [SerializeField] protected Light lightBulbState;
+
+
         protected float rotationOffsetAmount = 0f;
         virtual protected void Start()
         {
-            ActivationState();
+
+            if (isActiveState)
+            {
+                AcitvationSwitchOn();
+            }
+
+            else
+            {
+                AcitvationSwitchOff();
+            }
+
         }
         virtual protected void Update()
         {
             if (fov.visibleTargets.Count != 0)
             {
-                gameObject.transform.LookAt(fov.visibleTargets[0].transform, Vector3.up);
+
+                TargetSpotted();
+                // gameObject.transform.LookAt(fov.visibleTargets[0].transform, Vector3.up);
+
 
                 fov.FindVisibleTargets();
                 // In case function fucks up
@@ -68,6 +84,10 @@ namespace ReusableStealthFramework.enemies
 
                 fov.FindVisibleTargets();
                 // In case function fucks up
+
+
+                Debug.Log("Spotted Player");
+
             }
 
             else
@@ -85,11 +105,18 @@ namespace ReusableStealthFramework.enemies
         public void AcitvationSwitchOn()
         {
             isActiveState = true;
+
+            lightBulbState.color = Color.green;
+            ActivationState();
         }
-        
+
         public void AcitvationSwitchOff()
         {
             isActiveState = false;
+            lightBulbState.color = Color.red;
+            ActivationState();
+
+
         }
     }
     
