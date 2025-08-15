@@ -11,6 +11,9 @@ public class Tripwire : BaseAutomatedAI
     [SerializeField] Turret[] designatedTurrets;
     [SerializeField] LineRenderer Tripwireline;
     [SerializeField] Vector3[] Tripwirelineposition;
+
+    [SerializeField] AudioSource alarmSound;
+    
     //  [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
 
     protected override void Start()
@@ -26,6 +29,7 @@ public class Tripwire : BaseAutomatedAI
         {
             designatedTurrets[i].AcitvationSwitchOn();
         }
+        alarmSound.Play();
     }
 
 }
