@@ -8,13 +8,21 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
 public class SecurityCamera : BaseAutomatedAI
+
+
 {
     [SerializeField] Turret[] designatedTurrets;
+    [SerializeField] public AudioClip beeping;
+    [SerializeField] public AudioSource soundEffects;
     //  [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
 
     protected override void TargetSpotted()
     {
         base.TargetSpotted();
+        if (!soundEffects.isPlaying)
+        {
+            soundEffects.Play();
+        }
         //Code below goes through arrays connected to the camera scanning player to activate enemies.
         for (int i = 0; i < designatedTurrets.Length; i++)
         {
@@ -25,9 +33,18 @@ public class SecurityCamera : BaseAutomatedAI
         // {
         //     designatedSpawnpoints[i].AcitvationSwitchOn();   
         // }
-        
+
         // uncomment when spawnpoints added.
     }
+
+    protected override void SearchingForTarget()
+    {
+        base.SearchingForTarget();
+            if (rotationOffsetAmount >= rotationLimitPointRight || rotationOffsetAmount <= rotationLimitPointLeft)
+            {
+                soundEffects.PlayOneShot(beeping);
+            }
     }
+}
 
 

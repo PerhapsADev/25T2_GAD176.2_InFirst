@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 162120112}
   - component: {fileID: 162120111}
   - component: {fileID: 162120110}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 162120109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6976858, y: 0.55999666, z: 1.7614352}
+  m_LocalPosition: {x: 3.72, y: 0.55999666, z: 3.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 555618954}
   - component: {fileID: 555618953}
   - component: {fileID: 555618952}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,30 +734,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1647694132054424240, guid: 5c4b99ea1583a984a8bf690ff5892861,
-        type: 3}
-      propertyPath: fov
-      value: 
-      objectReference: {fileID: 2123463837}
     - target: {fileID: 8120800396521359819, guid: 5c4b99ea1583a984a8bf690ff5892861,
         type: 3}
       propertyPath: m_Name
       value: SecurityCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120800396521359819, guid: 5c4b99ea1583a984a8bf690ff5892861,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151339077646193757, guid: 5c4b99ea1583a984a8bf690ff5892861,
-        type: 3}
-      propertyPath: viewAngle
-      value: 41.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8151339077646193757, guid: 5c4b99ea1583a984a8bf690ff5892861,
-        type: 3}
-      propertyPath: obstacleMask.m_Bits
-      value: 1536
       objectReference: {fileID: 0}
     - target: {fileID: 8933224403747050353, guid: 5c4b99ea1583a984a8bf690ff5892861,
         type: 3}
@@ -830,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &920128576
 Transform:
   m_ObjectHideFlags: 0
@@ -885,7 +865,7 @@ GameObject:
   - component: {fileID: 975985788}
   - component: {fileID: 975985787}
   - component: {fileID: 975985786}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -990,7 +970,7 @@ GameObject:
   - component: {fileID: 1002144416}
   - component: {fileID: 1002144415}
   - component: {fileID: 1002144414}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1092,7 +1072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1177699689}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1130,7 +1110,7 @@ GameObject:
   - component: {fileID: 1384944990}
   - component: {fileID: 1384944989}
   - component: {fileID: 1384944988}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,18 +1650,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003481828}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2123463837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8151339077646193757, guid: 5c4b99ea1583a984a8bf690ff5892861,
-    type: 3}
-  m_PrefabInstance: {fileID: 723714298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424eea531b3efe84c89dd84de233fd5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
