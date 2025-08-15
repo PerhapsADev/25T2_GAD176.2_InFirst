@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace ReusableStealthFramework.enemies
 {
-    public class BaseOrganicAi : MonoBehaviour
+    public abstract class BaseOrganicAi : MonoBehaviour
 
     {
 
@@ -12,7 +12,7 @@ namespace ReusableStealthFramework.enemies
         protected bool patrolMode = true;
 
         [SerializeField] public ReusableStealthFramework.fov.FieldOfView fov;
-        [SerializeField] public Player playerScript; 
+        [SerializeField] public Player playerScript;
 
 
         [SerializeField] protected GameObject[] pathNodes;
@@ -43,7 +43,7 @@ namespace ReusableStealthFramework.enemies
                 {
                     MoveTowardsObjective(fov.visibleTargets[0]);
                 }
-                
+
                 engaged = fov.visibleTargets[0];
                 // gameObject.transform.LookAt(fov.visibleTargets[0].transform, Vector3.up);
 
@@ -55,28 +55,19 @@ namespace ReusableStealthFramework.enemies
             {
                 MoveTowardsObjective(NextPatrolNode.transform);
                 CheckPointChecker();
-                patrolMode = true;    
+                patrolMode = true;
             }
         }
-
-        // virtual protected void FixedUpdate()
-        // {
-        //     MoveTowardsObjective();
-
-        //     if (patrolMode)
-        //     {
-        //         CheckPointChecker();
-        //     }
-        // }
         virtual protected void MoveTowardsObjective(Transform targetTransform)
         {
             // Sets speed to average and structure to adjust speed.
             Vector3 direction = (targetTransform.position - gameObject.transform.position);
             direction.Normalize();
+            print(movementSpeedInUnitsPerSecond);
             // direction += this.transform.position;
             // Debug.Log(direction);
 
-            this.transform.GetComponent<Rigidbody>().MovePosition(direction * movementSpeedInUnitsPerSecond * Time.fixedDeltaTime + this.transform.position);
+            this.transform.GetComponent<Rigidbody>().velocity = (direction * movementSpeedInUnitsPerSecond * Time.fixedDeltaTime); 
             this.transform.LookAt(targetTransform, Vector3.up);
 
         }
@@ -104,5 +95,8 @@ namespace ReusableStealthFramework.enemies
             gameObject.transform.LookAt(fov.visibleTargets[0].transform, Vector3.up);
             // Debug.Log("Spotted Player");
         }
+
+        abstract public void Attack();
+    
     }
 }

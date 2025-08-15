@@ -6,11 +6,16 @@ using UnityEngine;
 public class GunGuard : BaseOrganicAi
 
 {
-     [SerializeField] protected float accuracy = 100f;
+    [SerializeField] protected float accuracy = 100f;
     protected float baseMovementSpeed;
     protected bool canFire = true;
 
     [SerializeField] protected float fireRate = 0.2f;
+    [SerializeField] protected AudioSource soundEffect;
+    [SerializeField] protected AudioClip gunfire;
+    [SerializeField] protected AudioClip spottedWhistle;
+    // [SerializeField] protected AudioSource spottedWhistle;
+    [SerializeField] protected bool playerSpottedForWhistle = false;
 
 
     protected override void Start()
@@ -29,31 +34,19 @@ public class GunGuard : BaseOrganicAi
         base.TargetSpotted();
         movementSpeedInUnitsPerSecond = 0f;
 
+        if (!playerSpottedForWhistle)
+        {
+            playerSpottedForWhistle = true;
+            soundEffect.PlayOneShot(spottedWhistle);
+        }
+
         if (canFire)
         {
-            RaycastHit hit;
-
-            // Decides Random Spread of Gun
-            Vector3 forward = this.transform.forward + RandomSpread();
-            forward.Normalize();
-
-            if (Physics.Raycast(this.transform.position, forward, out hit)) // player = playermask
+            Attack();
+            if (!soundEffect.isPlaying)
             {
-                Debug.Log("Ray has been casted");
-                Debug.DrawRay(this.transform.position, forward * 300, Color.green, 1f);
-
-                if (hit.collider.gameObject.GetComponent<Player>())
-                {
-                    Player player = hit.collider.gameObject.GetComponent<Player>();
-                    playerScript.playerHealthValue -= damageValue;
-                    // INCORPRATE >>> player.PlayerTakeDamage(damageValue);
-                    // Add Sound effect gun shot with each shoot
-
-
-                }
+                soundEffect.Play();
             }
-            canFire = false;
-            StartCoroutine("FireRateTimer");
         }
     }
 
@@ -72,6 +65,30 @@ public class GunGuard : BaseOrganicAi
 
         // Debug.Log (new Vector3(xAccuracyPosition, yAccuracyPosition, zAccuracyPosition));
         return new Vector3(xAccuracyPosition, yAccuracyPosition, zAccuracyPosition);
+    }
+
+    public override void Attack()
+    {
+           RaycastHit hit;
+
+            // Decides Random Spread of Gun
+            Vector3 forward = this.transform.forward + RandomSpread();
+            forward.Normalize();
+
+            if (Physics.Raycast(this.transform.position, forward, out hit)) // player = playermask
+            {
+                Debug.Log("Ray has been casted");
+                Debug.DrawRay(this.transform.position, forward * 300, Color.green, 1f);
+
+                if (hit.collider.gameObject.GetComponent<Player>())
+                {
+                    Player player = hit.collider.gameObject.GetComponent<Player>();
+                    playerScript.playerHealthValue -= damageValue;
+                    // Add Sound effect gun shot with each shoot
+                }
+            }
+            canFire = false;
+            StartCoroutine("FireRateTimer");
     }
 }
 

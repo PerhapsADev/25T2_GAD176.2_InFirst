@@ -7,10 +7,11 @@ using UnityEngine;
 public class DogGuard : BaseOrganicAi
 {
     [SerializeField] protected float biteCooldown = 2f;
+    [SerializeField] AudioSource dogBarking;
     protected float baseMovementSpeed;
 
     protected float movementTimeOutTimer = 2f;
-    protected bool canBite = true;
+    public bool canBite = true;
     protected override void Start()
     {
         base.Start();
@@ -31,16 +32,17 @@ public class DogGuard : BaseOrganicAi
         movementSpeedInUnitsPerSecond = baseMovementSpeed;
     }
 
-    public void Bite(Player player)
+    public override void Attack()
     {
             playerScript.playerHealthValue -= damageValue;
-            // canBite = true;
-            if (canBite)
-            {
-                movementSpeedInUnitsPerSecond = 0f;
-                canBite = false;
-                StartCoroutine("BiteCooldownTimer");
-            }
+        // canBite = true;
+        if (canBite)
+        {
+            movementSpeedInUnitsPerSecond = 0f;
+            canBite = false;
+            StartCoroutine("BiteCooldownTimer");
+            dogBarking.Play();
+        }
             Debug.Log(canBite + ": Bite Cooldown Started");
     }
 }
