@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Box
+  - CinemachineTarget
+  - Scrap
   layers:
   - Default
   - TransparentFX

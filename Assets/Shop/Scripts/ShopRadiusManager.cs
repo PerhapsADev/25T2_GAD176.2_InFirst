@@ -2,55 +2,58 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopRadiusManager : MonoBehaviour
+namespace ReusableStealthFramework
 {
-    [SerializeField] private bool InShopRadius = false;
-    [SerializeField] private GameObject UiPressE;
-    [SerializeField] private GameObject ShopMenu;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class ShopRadiusManager : MonoBehaviour
     {
-        UiPressE.SetActive(false);
-        ShopMenu.SetActive(false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        InShopRadius = true;
+        [SerializeField] private bool InShopRadius = false;
+        [SerializeField] private GameObject UiPressE;
+        [SerializeField] private GameObject ShopMenu;
 
 
-        //This triggers Ui 'Press E' to appear on screen
-        if (other.CompareTag("Player") == true)
-        {
-            UiPressE.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        InShopRadius = false;
-
-        if (other.CompareTag("Player") == true)
+        // Start is called before the first frame update
+        void Start()
         {
             UiPressE.SetActive(false);
+            ShopMenu.SetActive(false);
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (InShopRadius == true)
+        private void OnTriggerEnter(Collider other)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ShopMenu.SetActive(true);
-            }
+            InShopRadius = true;
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+
+            //This triggers Ui 'Press E' to appear on screen
+            if (other.CompareTag("Player") == true)
             {
-                ShopMenu.SetActive(false);
+                UiPressE.SetActive(true);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            InShopRadius = false;
+
+            if (other.CompareTag("Player") == true)
+            {
+                UiPressE.SetActive(false);
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (InShopRadius == true)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    ShopMenu.SetActive(true);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    ShopMenu.SetActive(false);
+                }
             }
         }
     }
