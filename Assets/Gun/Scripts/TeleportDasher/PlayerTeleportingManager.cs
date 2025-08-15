@@ -25,10 +25,11 @@ namespace ReuseableStealthFramework.TeleportDasher
 
         public void TeleportDashPlayer()
         {
-            Vector3 _updatedPlayerPosition = _playerTransform.position + _playerTransform.rotation * new Vector3(0, 0, 1) * _amountToUpdatePositionBy;
+            Vector3 _updatedPlayerPosition = _playerTransform.rotation * new Vector3(0, 0, 1) * _amountToUpdatePositionBy;
 
             _characterController.enabled = false;
-            _playerTransform.position = _updatedPlayerPosition;
+            _playerTransform.position += _updatedPlayerPosition;
+            Debug.Log("Player has travelled a distance of [" +  _updatedPlayerPosition.magnitude + "]");
             _characterController.enabled = true;
         }
 
