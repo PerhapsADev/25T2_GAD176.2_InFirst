@@ -22,6 +22,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 250);
                 {
                     Scraps -= 250;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -30,6 +31,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 50);
                 {
                     Scraps -= 50;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -38,6 +40,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 100) ;
                 {
                     Scraps -= 100;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -46,6 +49,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 150) ;
                 {
                     Scraps -= 150;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -54,6 +58,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 200) ;
                 {
                     Scraps -= 200;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -62,6 +67,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 250) ;
                 {
                     Scraps -= 250;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -70,6 +76,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 100) ;
                 {
                     Scraps -= 100;
+                    //Add code that will active script for purchaseble item
                 }
             }
 
@@ -78,6 +85,7 @@ namespace ReusableStealthFramework
                 if (Scraps >= 0) ;
                 {
                     Scraps -= 0;
+                    //Add code that will active script for purchaseble item
                 }
             }
         }

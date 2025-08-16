@@ -452,6 +452,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300795595140076727, guid: 02508a5be80418540beba41867b4c392,
+        type: 3}
+      propertyPath: dogGuardPrefab
+      value: 
+      objectReference: {fileID: 1989521700936796532, guid: 45615e802f229694484d3a25f17edb7a,
+        type: 3}
+    - target: {fileID: 300795595140076727, guid: 02508a5be80418540beba41867b4c392,
+        type: 3}
+      propertyPath: gunGuardPrefab
+      value: 
+      objectReference: {fileID: 9026987258766539329, guid: a921e48268937194bb9155b3e5c48347,
+        type: 3}
     - target: {fileID: 6586302608851776895, guid: 02508a5be80418540beba41867b4c392,
         type: 3}
       propertyPath: m_Icon
