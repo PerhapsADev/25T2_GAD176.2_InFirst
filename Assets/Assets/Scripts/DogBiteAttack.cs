@@ -11,14 +11,13 @@ public class DogBiteAttack : MonoBehaviour
         dogGuard = GetComponentInParent<DogGuard>();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.GetComponent<Player>())
+        if (other.gameObject.GetComponent<Player>() && dogGuard.canBite)
         {
             Player player = other.gameObject.GetComponent<Player>();
 
-            dogGuard.Bite(player);
+            dogGuard.Attack();
         }
-
     }
 }
