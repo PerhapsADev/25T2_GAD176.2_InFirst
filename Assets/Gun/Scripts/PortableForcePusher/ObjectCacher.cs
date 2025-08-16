@@ -34,12 +34,11 @@ namespace ReuseableStealthFramework.PortableForcePusher
 
         public List<Rigidbody> GetObjectsToForcePush()
         {
-            // We use SphereCastAll here rather than CheckSphere or other related
-            // methods, as SphereCastAll can detect colliders already colliding
-            // with it when created.
+            // We use Overlap Sphere here rather than CheckSphere or other related
+            // methods, as OverlapSphere will return the colliders with all objects
+            // touching or inside the sphere, making it te most ideal
             Collider[] _temporaryRaycastHitArray = Physics.OverlapSphere(_positionToCreateSphereCast.position, _sphereCastRadius, _layerMask);
             Debug.Log("_temporaryRaycastHitArray is equal to [" + _temporaryRaycastHitArray.Length + "]");
-            //Collider[] _objectsReturnedBySphereCast = _temporaryRaycastHitArray;
 
             for (int arrayIndex = 0; arrayIndex < _temporaryRaycastHitArray.Length ; arrayIndex++)
             {
@@ -52,8 +51,6 @@ namespace ReuseableStealthFramework.PortableForcePusher
             }
 
             Debug.Log("objectsToForcePush has [" + _objectsToForcePush.Count + "]");
-            //_objectsReturnedBySphereCast = null;
-            //Debug.Log("objectsToForcePush now has [" + _objectsToForcePush.Count + "] after clearing objectsReturnedBySphereCast");
             return _objectsToForcePush;
         }
 

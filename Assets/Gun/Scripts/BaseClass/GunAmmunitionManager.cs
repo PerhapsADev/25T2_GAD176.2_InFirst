@@ -25,7 +25,7 @@ namespace ReuseableStealthFramework.Gun
         // This is public as we're calling this in GunShooter and classes
         // inheriting from it. We want to only have true passed in for isStarting
         // when setting values at statr of game. Otherwise, it should be false
-        public abstract void UpdateAmmunition(int valueToUpdateBy, bool isStaring);
+        public abstract void UpdateAmmunition(int valueToUpdateBy, bool isStarting);
 
         // Public as this is called in GunShooter + inheriting classes
         public int GetCurrentAmmunition()
