@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Box
-  - Enemy
   - CinemachineTarget
+  - Enemy
   layers:
   - Default
   - TransparentFX
