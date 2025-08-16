@@ -15,7 +15,7 @@ namespace ReusableStealthFramework.enemies
         [SerializeField] public Player playerScript; 
 
 
-        [SerializeField] protected GameObject[] pathNodes;
+        [SerializeField] public GameObject[] pathNodes;
         [SerializeField] protected float movementSpeedInUnitsPerSecond = 19f;
         [SerializeField] protected LayerMask player;
         [SerializeField] protected LayerMask guards;

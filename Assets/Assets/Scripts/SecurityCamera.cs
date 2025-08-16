@@ -12,9 +12,10 @@ public class SecurityCamera : BaseAutomatedAI
 
 {
     [SerializeField] Turret[] designatedTurrets;
-    [SerializeField] GuardManager[] designatedEnemySpawnpoints;
+    [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
     [SerializeField] public AudioClip beeping;
     [SerializeField] public AudioSource soundEffects;
+    protected bool alerted = false;
     //  [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
 
     protected override void TargetSpotted()
@@ -25,24 +26,30 @@ public class SecurityCamera : BaseAutomatedAI
             soundEffects.Play();
         }
         //Code below goes through arrays connected to the camera scanning player to activate enemies.
-        for (int i = 0; i < designatedTurrets.Length; i++)
+        if (!alerted)
         {
-            designatedTurrets[i].AcitvationSwitchOn();
-        }
+            alerted = true;
+            
+            for (int i = 0; i < designatedTurrets.Length; i++)
+            {
+                designatedTurrets[i].AcitvationSwitchOn();
+            }
 
-        // for (int i = 0; i < designatedEnemySpawnpoints.Length; i++)
-        // {
-        //     designatedEnemySpawnpoints[i].EnemiesSpawn();
-        // }
+            for (int i = 0; i < designatedEnemySpawnpoints.Length; i++)
+            {
+                designatedEnemySpawnpoints[i].SpawnEnemies();
+            }
+        }
     }
+    
 
     protected override void SearchingForTarget()
     {
         base.SearchingForTarget();
-            if (rotationOffsetAmount >= rotationLimitPointRight || rotationOffsetAmount <= rotationLimitPointLeft)
-            {
-                soundEffects.PlayOneShot(beeping);
-            }
+        if (rotationOffsetAmount >= rotationLimitPointRight || rotationOffsetAmount <= rotationLimitPointLeft)
+        {
+            soundEffects.PlayOneShot(beeping);
+        }
     }
 }
 

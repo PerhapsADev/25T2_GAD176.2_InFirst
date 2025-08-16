@@ -14,8 +14,7 @@ public class GuardManager : MonoBehaviour
     [SerializeField] public int guardPoolSize = 2; //const = Cannot change.
     [SerializeField] protected int initalDogGuard;
     [SerializeField] protected int initalGunGuard;
-
-    private List<BaseOrganicAi> guardPool;
+    private static List<BaseOrganicAi> guardPool;
 
     protected void Awake()
     {
@@ -43,11 +42,11 @@ public class GuardManager : MonoBehaviour
         }
     }
 
-    public BaseOrganicAi GetPooledGuard(BaseOrganicAi enemyType)
+    public static BaseOrganicAi GetPooledGuard(BaseOrganicAi enemyType)
     {
         foreach (BaseOrganicAi guard in guardPool)
         {
-            if (!guard.isActiveAndEnabled && guard == enemyType)
+            if (!guard.isActiveAndEnabled && guard.GetType()  == enemyType.GetType())
             {
                 return guard;
             }
@@ -61,12 +60,12 @@ public class GuardManager : MonoBehaviour
         return newGuard;
     }
 
-    // public void EnemiesSpawn()
-    // {
-    //     public GameObject gunGuardPrefabSpawn; 
+    //  public void EnemiesSpawn()
+    //  {
+    //      public GameObject gunGuardPrefabSpawn; 
 
-    //     GameObject.gunGuardPrefab.SetActive(true);
-    //     GameObject.dogGuardPrefab.SetActive(true);
+    //      GameObject.gunGuardPrefab.SetActive(true);
+    //      GameObject.dogGuardPrefab.SetActive(true);
     // }
 }
 
