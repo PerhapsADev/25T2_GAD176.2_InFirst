@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Box
   - CinemachineTarget
-  - Scrap
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,13 +14,13 @@ TagManager:
   - 
   - Water
   - UI
+  - ForcePushable
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Obstacle
+  - Turrets
+  - Cameras
+  - Tripwires
   - 
   - 
   - 
