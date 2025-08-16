@@ -7,7 +7,6 @@ namespace ReusableStealthFramework.enemies
 
     public class Turret : BaseAutomatedAI
     {
-
         protected float fireRateTimer = 1f;
         [SerializeField] protected float accuracy = 100f;
         [SerializeField] public int damageValue = 1;
@@ -50,6 +49,7 @@ namespace ReusableStealthFramework.enemies
 
         
         }
+
     }
 
 
