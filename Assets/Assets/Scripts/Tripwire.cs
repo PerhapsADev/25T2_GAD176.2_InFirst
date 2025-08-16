@@ -9,6 +9,7 @@ using UnityEngine.InputSystem.XR;
 public class Tripwire : BaseAutomatedAI
 {
     [SerializeField] Turret[] designatedTurrets;
+    [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
     [SerializeField] LineRenderer Tripwireline;
     [SerializeField] Vector3[] Tripwirelineposition;
 
@@ -30,6 +31,11 @@ public class Tripwire : BaseAutomatedAI
             designatedTurrets[i].AcitvationSwitchOn();
         }
         alarmSound.Play();
+
+        for (int i = 0; i < designatedEnemySpawnpoints.Length; i++)
+            {
+                designatedEnemySpawnpoints[i].SpawnEnemies();
+            }
     }
 
 }

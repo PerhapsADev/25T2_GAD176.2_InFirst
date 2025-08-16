@@ -7,6 +7,7 @@ TagManager:
   - Box
   - CinemachineTarget
   - GuardManager
+  - EnemySpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -16,13 +17,12 @@ TagManager:
   - UI
   - ForcePushable
   - 
-
+  - 
   - Player
   - Obstacle
   - Turrets
   - Cameras
   - Tripwires
-  - 
   - 
   - 
   - 

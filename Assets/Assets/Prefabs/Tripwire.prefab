@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 794535337392627010}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.727, y: 0.38, z: 1.856}
+  m_LocalPosition: {x: -1.57897, y: 1.5383466, z: 10.503176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,6 +56,7 @@ MonoBehaviour:
   isActiveState: 1
   lightBulbState: {fileID: 7578047022440128562}
   designatedTurrets: []
+  designatedEnemySpawnpoints: []
   Tripwireline: {fileID: 5846577674109439897}
   Tripwirelineposition:
   - {x: 0, y: 0, z: 0}
@@ -71,7 +72,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9c846cd96342f9642a26b1e8260128e0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 623e982b2b60640438461f72339ac6e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.144
   m_Pitch: 1
@@ -204,7 +205,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.8301887, g: 0, b: 0, a: 1}
   m_Intensity: 5
-  m_Range: 0.2
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -492,6 +493,7 @@ GameObject:
   - component: {fileID: 2385664437233324979}
   - component: {fileID: 5846577674109439897}
   - component: {fileID: 8415742635299975927}
+  - component: {fileID: 6998665381160662260}
   m_Layer: 12
   m_Name: fov Tripwire
   m_TagString: Untagged
@@ -601,10 +603,10 @@ MonoBehaviour:
   viewAngle: 5.6
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   visibleTargets: []
   delayFindingTarget: 0.1
 --- !u!120 &5846577674109439897
@@ -721,6 +723,28 @@ LineRenderer:
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &8415742635299975927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5115898745360847272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424eea531b3efe84c89dd84de233fd5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 0
+  viewAngle: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleTargets: []
+  delayFindingTarget: 1
+--- !u!114 &6998665381160662260
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
