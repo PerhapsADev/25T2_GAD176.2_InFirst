@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Box
   - CinemachineTarget
-  - Enemy
+  - GuardManager
   layers:
   - Default
   - TransparentFX
@@ -21,7 +21,7 @@ TagManager:
   - Turrets
   - Cameras
   - Tripwires
-  - 
+  - Guards
   - 
   - 
   - 
