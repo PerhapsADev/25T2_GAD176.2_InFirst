@@ -9,12 +9,11 @@ public class GuardManager : MonoBehaviour
     public static GuardManager Instance;
     [SerializeField] protected DogGuard dogGuardPrefab;
     [SerializeField] protected GunGuard gunGuardPrefab;
-    
+   // [SerializeField] protected GuardManager enemySpawnPoint;
+
     [SerializeField] public int guardPoolSize = 2; //const = Cannot change.
-
-
     [SerializeField] protected int initalDogGuard;
-       [SerializeField] protected int initalGunGuard;
+    [SerializeField] protected int initalGunGuard;
 
     private List<BaseOrganicAi> guardPool;
 
@@ -40,7 +39,7 @@ public class GuardManager : MonoBehaviour
             guard.transform.position = transform.position;
             guard.gameObject.SetActive(false);
             guardPool.Add(guard);
-            
+
         }
     }
 
@@ -61,5 +60,13 @@ public class GuardManager : MonoBehaviour
 
         return newGuard;
     }
+
+    // public void EnemiesSpawn()
+    // {
+    //     public GameObject gunGuardPrefabSpawn; 
+
+    //     GameObject.gunGuardPrefab.SetActive(true);
+    //     GameObject.dogGuardPrefab.SetActive(true);
+    // }
 }
 

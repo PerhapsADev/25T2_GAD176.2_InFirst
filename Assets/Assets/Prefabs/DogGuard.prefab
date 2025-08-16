@@ -256,7 +256,7 @@ MonoBehaviour:
     m_Bits: 1024
   guards:
     serializedVersion: 2
-    m_Bits: 32768
+    m_Bits: 0
   damageValue: 10
   healthValue: 10
   maxDistanceToChase: 1

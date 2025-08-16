@@ -12,6 +12,7 @@ public class SecurityCamera : BaseAutomatedAI
 
 {
     [SerializeField] Turret[] designatedTurrets;
+    [SerializeField] GuardManager[] designatedEnemySpawnpoints;
     [SerializeField] public AudioClip beeping;
     [SerializeField] public AudioSource soundEffects;
     //  [SerializeField] EnemySpawnpoints[] designatedEnemySpawnpoints;
@@ -29,12 +30,10 @@ public class SecurityCamera : BaseAutomatedAI
             designatedTurrets[i].AcitvationSwitchOn();
         }
 
-        // for (int i = 0; i < designatedEnemySpawnpoints.Length; i ++)
+        // for (int i = 0; i < designatedEnemySpawnpoints.Length; i++)
         // {
-        //     designatedSpawnpoints[i].AcitvationSwitchOn();   
+        //     designatedEnemySpawnpoints[i].EnemiesSpawn();
         // }
-
-        // uncomment when spawnpoints added.
     }
 
     protected override void SearchingForTarget()
