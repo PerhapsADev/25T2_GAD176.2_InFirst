@@ -8,6 +8,8 @@ public class GoalAchieveManager : MonoBehaviour
 
     [SerializeField] GameObject Rift;
 
+
+
     // Update is called once per frame
     void Update()
     {
